@@ -21,14 +21,15 @@ public class PageAdapter extends FragmentStatePagerAdapter
 
         switch (position) {
             case 0:
-                Hajj tab1 = new Hajj();
-                return tab1;
+                Prepare tab3 = new Prepare();
+                return tab3;
             case 1:
                 Umrah tab2 = new Umrah();
                 return tab2;
             case 2:
-                Notifications tab3 = new Notifications();
-                return tab3;
+                Hajj tab1 = new Hajj();
+                return tab1;
+
 
             default:
                 return null;

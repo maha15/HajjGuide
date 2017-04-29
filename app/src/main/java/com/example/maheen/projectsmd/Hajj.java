@@ -4,14 +4,14 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.app.Fragment;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,16 +23,18 @@ public class Hajj extends Fragment {
 
     ArrayList<EssentialItem> listitems = new ArrayList<>();
     RecyclerView MyRecyclerView;
+    RecyclerView RecyclerViewleftmenue;
 
     // TODO: Populate these from DB
     String EssentialItemDescription[] = {"Bath and put on Ihram","Read the dua to make intention","Here on contineously read talbiyah","Go to minnah","Pray qasr prayers"};
     int  Images[] = {R.drawable.ihram_man_women,R.drawable.intention,R.drawable.talbiyah,R.drawable.minnah,R.drawable.namaz};
 
+    int  Imagesleftmenue[] = {R.drawable.zulhijjah,R.drawable.zillhajj8,R.drawable.zillhajj9,R.drawable.zillhajj10,R.drawable.zillhajj11,R.drawable.zillhajj12,R.drawable.zillhajj13, R.drawable.dos};
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initializeList();
-       // getActivity().setTitle("7 Wonders of the Modern World");
     }
 
     @Override
@@ -40,6 +42,8 @@ public class Hajj extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_hajj, container, false);
+
+        // Right Panel
         MyRecyclerView = (RecyclerView) view.findViewById(R.id.cardView);
         MyRecyclerView.setHasFixedSize(true);
         LinearLayoutManager MyLayoutManager = new LinearLayoutManager(getActivity());
@@ -48,6 +52,18 @@ public class Hajj extends Fragment {
             MyRecyclerView.setAdapter(new MyAdapter(listitems));
         }
         MyRecyclerView.setLayoutManager(MyLayoutManager);
+
+
+        // left menue
+
+        RecyclerViewleftmenue = (RecyclerView) view.findViewById(R.id.leftmenue_rv);
+        RecyclerViewleftmenue.setHasFixedSize(true);
+        LinearLayoutManager MyLayoutManager2 = new LinearLayoutManager(getActivity());
+        MyLayoutManager2.setOrientation(LinearLayoutManager.VERTICAL);
+        if (listitems.size() > 0 & RecyclerViewleftmenue != null) {
+            RecyclerViewleftmenue.setAdapter(new MyAdapter2(Imagesleftmenue));
+        }
+        RecyclerViewleftmenue.setLayoutManager(MyLayoutManager2);
 
         return view;
     }
@@ -92,6 +108,77 @@ public class Hajj extends Fragment {
             return list.size();
         }
     }
+
+
+
+
+
+    public class MyAdapter2 extends RecyclerView.Adapter<MenueViewHolder> {
+        private int list[];
+
+        public MyAdapter2(int Data[]) {
+            list = Data;
+        }
+
+        @Override
+        public MenueViewHolder onCreateViewHolder(ViewGroup parent,int viewType) {
+            // create a new view
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.leftmenu_recycle_items, parent, false);
+            MenueViewHolder holder = new MenueViewHolder(view);
+            return holder;
+        }
+
+        @Override
+        public void onBindViewHolder(final MenueViewHolder holder, int position) {
+
+            holder.buttonImage.setImageResource(list[position]);
+
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return list.length;
+        }
+    }
+
+
+
+
+    public class MenueViewHolder extends RecyclerView.ViewHolder {
+
+        public ImageView buttonImage;
+
+
+        public MenueViewHolder(View v) {
+            super(v);
+            buttonImage = (ImageButton) v.findViewById(R.id.iconButton);
+            buttonImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Toast.makeText(getActivity(),R.id.iconButton +" clicked",Toast.LENGTH_SHORT).show();
+
+
+
+                }
+            });
+
+
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
