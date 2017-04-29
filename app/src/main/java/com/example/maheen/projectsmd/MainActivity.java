@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements Hajj.OnFragmentIn
        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         tabLayout.addTab(tabLayout.newTab().setText("Hajj"));
         tabLayout.addTab(tabLayout.newTab().setText("Umrah"));
-        tabLayout.addTab(tabLayout.newTab().setText("Notifiactions"));
+        tabLayout.addTab(tabLayout.newTab().setText("Prepare"));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
