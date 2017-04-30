@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Hajj extends Fragment {
@@ -48,12 +50,38 @@ public class Hajj extends Fragment {
         MyRecyclerView.setHasFixedSize(true);
         LinearLayoutManager MyLayoutManager = new LinearLayoutManager(getActivity());
         MyLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        SimpleAdapter mAdapter = null;
         if (listitems.size() > 0 & MyRecyclerView != null) {
-            MyRecyclerView.setAdapter(new MyAdapter(listitems));
+            //MyRecyclerView.setAdapter(new MyAdapter(listitems));
+            mAdapter = new SimpleAdapter( getContext(), listitems);
+            MyRecyclerView.setAdapter(mAdapter);
         }
         MyRecyclerView.setLayoutManager(MyLayoutManager);
+        MyRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(),LinearLayoutManager.VERTICAL));
 
 
+        //This is the code to provide a sectioned list
+        List<SimpleSectionedRecyclerViewAdapter.Section> sections = new ArrayList<SimpleSectionedRecyclerViewAdapter.Section>();//!!!!!!!!!!!
+
+        //Sections
+        sections.add(new SimpleSectionedRecyclerViewAdapter.Section(0,"ZillHajj 8"));
+        sections.add(new SimpleSectionedRecyclerViewAdapter.Section(1,"ZillHajj 9"));
+        sections.add(new SimpleSectionedRecyclerViewAdapter.Section(2,"ZillHajj 10"));
+        sections.add(new SimpleSectionedRecyclerViewAdapter.Section(3,"ZillHajj 11"));
+        sections.add(new SimpleSectionedRecyclerViewAdapter.Section(4,"ZillHajj 12"));
+
+        //Add your adapter to the sectionAdapter
+        SimpleSectionedRecyclerViewAdapter.Section[] dummy = new SimpleSectionedRecyclerViewAdapter.Section[sections.size()];
+        SimpleSectionedRecyclerViewAdapter mSectionedAdapter = new
+                SimpleSectionedRecyclerViewAdapter(getContext(),R.layout.section,R.id.section_text,mAdapter);
+        mSectionedAdapter.setSections(sections.toArray(dummy));
+
+        //Apply this adapter to the RecyclerView
+        MyRecyclerView.setAdapter(mSectionedAdapter);
+
+
+
+        //-------------------------------------------------------------------------------------------------------
         // left menue
 
         RecyclerViewleftmenue = (RecyclerView) view.findViewById(R.id.leftmenue_rv);
