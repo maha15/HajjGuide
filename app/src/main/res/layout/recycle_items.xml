@@ -65,7 +65,7 @@
                 android:layout_width="@dimen/icon_width"
                 android:layout_height="@dimen/icon_height"
                 android:padding="@dimen/icon_padding"
-                android:src="@drawable/ic_like" />
+                android:src="@drawable/detailinfo" />
 
             <ImageView
                 android:id="@+id/shareImageView"

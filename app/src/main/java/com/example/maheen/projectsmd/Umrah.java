@@ -30,7 +30,7 @@ public class Umrah extends Fragment {
     String EssentialItemDescription[] = {"Enter Al-Haram gate on your right foot  ","Uncover right shoulder","Read dua \n بِسم الله،والصّلاة والسّلام على َرسول الله،الّلهُم افتَح لي أبوابَ رَحْمَتِك.","Start each round while touching or raising hands towards Hajr-e-aswad","Behind maqam ibrahim pray two raka","Recite surah Kaafiroon in first raka \n Recite surah Ikhlas in second raka","Drink zamzam after performing Raka","Drink in 1 gulp","recite \n آللّهُمَ اِنِّىْ اَسْعَلُكَ عِلْماً نَّافَعِاً وَّرِزْقًا وَّاسِعاً وَشِفَائً مِّنْ كُلِ دَائً","While going for Saaee Raise hands towards Hajr-e-aswad and Recite \n بِسمِ اللّهِ اللّهُ اَكْبَر","Recite when reached saffa \n إِنَّ الصَّفَا وَالْمَرْوَةَ مِنْ شَعَا ئِرِاللّهِ\n أَبْدَأُ بِمَا بَدَأَاللّهُ بِه","Shave or trim hair","Your umrah has completed!"};
     int  Images[] = {R.drawable.masjidalharam,R.drawable.uncoverrightshoulder,R.drawable.intention,R.drawable.hajreaswad1,R.drawable.makameibrahimif,R.drawable.nawafilatibrahimi,R.drawable.zamzamwater,R.drawable.persondrinkingzamazam,R.drawable.intention,R.drawable.hijreaswad,R.drawable.safatomarwa,R.drawable.scissorsf,R.drawable.umrahcom};
 
-    int  Imagesleftmenue[] = {R.drawable.finalumrah,R.drawable.kaba,R.drawable.ibrahimi,R.drawable.tap_water,R.drawable.saee,R.drawable.scissors,R.drawable.dos};
+    int  Imagesleftmenue[] = {R.drawable.finalumrah,R.drawable.kaba,R.drawable.ibrahimi,R.drawable.tap_water,R.drawable.saee,R.drawable.finalscissors};
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -207,17 +207,17 @@ public class Umrah extends Fragment {
 
 
                     int id = (int)likeImageView.getTag();
-                    if( id == R.drawable.ic_like){
+                    if( id == R.drawable.detailinfo){
 
-                        likeImageView.setTag(R.drawable.ic_liked);
-                        likeImageView.setImageResource(R.drawable.ic_liked);
+                        likeImageView.setTag(R.drawable.detailedinfo);
+                        likeImageView.setImageResource(R.drawable.detailedinfo);
 
                         Toast.makeText(getActivity(),titleTextView.getText()+" added to favourites",Toast.LENGTH_SHORT).show();
 
                     }else{
 
-                        likeImageView.setTag(R.drawable.ic_like);
-                        likeImageView.setImageResource(R.drawable.ic_like);
+                        likeImageView.setTag(R.drawable.detailinfo);
+                        likeImageView.setImageResource(R.drawable.detailinfo);
                         Toast.makeText(getActivity(),titleTextView.getText()+" removed from favourites",Toast.LENGTH_SHORT).show();
 
 
