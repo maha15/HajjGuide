@@ -17,26 +17,28 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     // Database Version
     private static final int DATABASE_VERSION = 1;
     // Database Name
-    private static final String DATABASE_NAME = "HajjGuideFinalll";
+    private static final String DATABASE_NAME = "HajjGuideFinally.db";
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         // SQL statement to create book table
-        String CREATE_UMRAH_TABLE = "CREATE TABLE umrah ( " +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "stepname TEXT, "+
-                "description TEXT,"+
-                "imagename INTEGER  )";
+        final String CREATE_UMRAH_TABLE = "CREATE TABLE "  + HajjGuideContract.Umrah.TABLE_NAME + " (" +
+                HajjGuideContract.Umrah._ID  + " INTEGER PRIMARY KEY, " +
+                HajjGuideContract.Umrah.KEY_STEPNAME + " TEXT NOT NULL, " +
+                HajjGuideContract.Umrah.KEY_DESCRIPTION    + " TEXT NOT NULL, "+
+                HajjGuideContract.Umrah.KEY_IMAGENAME +  " INTEGER NOT NULL);";
 
-        String CREATE_HAJJ_TABLE = "CREATE TABLE hajj ( " +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "stepname TEXT, "+
-                "description TEXT,"+
-                "imagename INTEGER  )";
+        String CREATE_HAJJ_TABLE = "CREATE TABLE "  + HajjGuideContract.Hajj.TABLE_NAME + " (" +
+                HajjGuideContract.Hajj._ID  + " INTEGER PRIMARY KEY, " +
+                HajjGuideContract.Hajj.KEY_STEPNAME + " TEXT NOT NULL, " +
+                HajjGuideContract.Hajj.KEY_DESCRIPTION    + " TEXT NOT NULL, "+
+                HajjGuideContract.Hajj.KEY_IMAGENAME +  " INTEGER NOT NULL);";
+
 
         // create books table
         db.execSQL(CREATE_UMRAH_TABLE);
@@ -46,8 +48,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older books table if existed
-        db.execSQL("DROP TABLE IF EXISTS umrah ");
-        db.execSQL("DROP TABLE IF EXISTS hajj ");
+        db.execSQL("DROP TABLE IF EXISTS"+ HajjGuideContract.Umrah.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS"+ HajjGuideContract.Hajj.TABLE_NAME );
 
         // create fresh books table
         this.onCreate(db);
@@ -58,9 +60,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
      * CRUD operations (create "add", read "get", update, delete) book + get all books + delete all books
      */
 
-    // Books table name
-    private static final String TABLE_UMRAH = "umrah";
-    private static final String TABLE_HAJJ = "Hajj";
+
 
     // Books Table Columns names
     private static final String KEY_ID = "id";
@@ -91,7 +91,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public Umrahclass getUmrah(int id){
+   /* public Umrahclass getUmrah(int id){
 
         // 1. get reference to readable DB
         SQLiteDatabase db = this.getReadableDatabase();
@@ -123,8 +123,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         // 5. return book
         return book;
     }
-
-    // Get All Books
+*/
+    // Get All ITEMS
     public List<Umrahclass> getAllUmrah(String tablename) {
         List<Umrahclass> umrahs = new LinkedList<Umrahclass>();
 

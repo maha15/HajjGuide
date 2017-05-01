@@ -64,8 +64,8 @@ public class Hajj extends Fragment {
         Log.d("valuee is ","aallal"+list.get(1).getDescription());
 
 
-        EssentialItemDescription=new String[list.size()];
-        Images=new int[list.size()];
+        EssentialItemDescription=new String[5];
+        Images=new int[5];
 
         for (int i = 0; i <EssentialItemDescription .length; i++)
         {

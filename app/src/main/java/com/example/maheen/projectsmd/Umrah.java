@@ -68,8 +68,8 @@ public class Umrah extends Fragment {
 
         Log.d("valuee is ","aallal"+list.get(1).getDescription());
 
-        EssentialItemDescription=new String[list.size()];
-        Images=new int[list.size()];
+        EssentialItemDescription=new String[13];
+        Images=new int[13];
 
         for (int i = 0; i <EssentialItemDescription .length; i++)
         {
