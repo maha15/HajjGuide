@@ -27,10 +27,10 @@ public class Umrah extends Fragment {
 
     // TODO: Populate these from DB
 
-    String EssentialItemDescription[] = {"Enter Al-Haram gate on your right foot  ","Uncover right shoulder","Read dua \n بِسم الله،والصّلاة والسّلام على َرسول الله،الّلهُم افتَح لي أبوابَ رَحْمَتِك.","Start each round while touching our raising hands towards Hajr-e-aswad"};
-    int  Images[] = {R.drawable.masjidalharam,R.drawable.uncoverrightshoulder,R.drawable.intention,R.drawable.hajreaswad1};
+    String EssentialItemDescription[] = {"Enter Al-Haram gate on your right foot  ","Uncover right shoulder","Read dua \n بِسم الله،والصّلاة والسّلام على َرسول الله،الّلهُم افتَح لي أبوابَ رَحْمَتِك.","Start each round while touching or raising hands towards Hajr-e-aswad","Behind maqam ibrahim pray two raka","Recite surah Kaafiroon in first raka \n Recite surah Ikhlas in second raka","Drink zamzam after performing Raka","Drink in 3 gulps","recite \n آللّهُمَ اِنِّىْ اَسْعَلُكَ عِلْماً نَّافَعِاً وَّرِزْقًا وَّاسِعاً وَشِفَائً مِّنْ كُلِ دَائً"};
+    int  Images[] = {R.drawable.masjidalharam,R.drawable.uncoverrightshoulder,R.drawable.intention,R.drawable.hajreaswad1,R.drawable.makameibrahimif,R.drawable.nawafilatibrahimi,R.drawable.zamzamwater,R.drawable.persondrinkingzamazam,R.drawable.intention};
 
-    int  Imagesleftmenue[] = {R.drawable.finalumrah,R.drawable.kaba,R.drawable.ibrahimi,R.drawable.zamzam1,R.drawable.saee,R.drawable.dos};
+    int  Imagesleftmenue[] = {R.drawable.finalumrah,R.drawable.kaba,R.drawable.ibrahimi,R.drawable.zamzam1,R.drawable.saee,R.drawable.scissors,R.drawable.dos};
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
