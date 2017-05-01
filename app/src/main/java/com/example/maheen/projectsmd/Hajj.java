@@ -27,21 +27,21 @@ public class Hajj extends Fragment {
     RecyclerView MyRecyclerView;
     RecyclerView RecyclerViewleftmenue;
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
     // Adapter for the content Recycler View
     HajjContentAdapter mAdapter = null;
 
 
     // TODO: Populate these from DB
-    String EssentialItemDescription[] = {"Bath and put on Ihram","Read the dua to make intention","Here on contineously read talbiyah","Go to minnah","Pray qasr prayers"};
-    int  Images[] = {R.drawable.ihram_man_women,R.drawable.intention,R.drawable.talbiyah,R.drawable.minnah,R.drawable.namaz};
-=======
+    //String EssentialItemDescription[] = {"Bath and put on Ihram","Read the dua to make intention","Here on contineously read talbiyah","Go to minnah","Pray qasr prayers"};
+    //int  Images[] = {R.drawable.ihram_man_women,R.drawable.intention,R.drawable.talbiyah,R.drawable.minnah,R.drawable.namaz};
+//=======
 
     String [] EssentialItemDescription ;
     int  [] Images;
     //  String EssentialItemDescription[] = {"Bath and put on Ihram","Read the dua to make intention","Here on contineously read talbiyah","Go to minnah","Pray qasr prayers"};
    // int  Images[] = {R.drawable.ihram_man_women,R.drawable.intention,R.drawable.talbiyah,R.drawable.minnah,R.drawable.namaz};
->>>>>>> e619cc0c6750135230f855c588331e17674ce4d5
+//>>>>>>> e619cc0c6750135230f855c588331e17674ce4d5
 
     int  Imagesleftmenue[] = {R.drawable.zulhijjah,R.drawable.zillhajj8,R.drawable.zillhajj9,R.drawable.zillhajj10,R.drawable.zillhajj11,R.drawable.zillhajj12,R.drawable.zillhajj13, R.drawable.dos};
 
