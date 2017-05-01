@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Umrah extends Fragment {
@@ -25,16 +27,61 @@ public class Umrah extends Fragment {
     RecyclerView MyRecyclerView;
     RecyclerView RecyclerViewleftmenue;
 
-    // TODO: Populate these from DB
 
-    String EssentialItemDescription[] = {"Enter Al-Haram gate on your right foot  ","Uncover right shoulder","Read dua \n بِسم الله،والصّلاة والسّلام على َرسول الله،الّلهُم افتَح لي أبوابَ رَحْمَتِك.","Start each round while touching or raising hands towards Hajr-e-aswad","Behind maqam ibrahim pray two raka","Recite surah Kaafiroon in first raka \n Recite surah Ikhlas in second raka","Drink zamzam after performing Raka","Drink in 1 gulp","recite \n آللّهُمَ اِنِّىْ اَسْعَلُكَ عِلْماً نَّافَعِاً وَّرِزْقًا وَّاسِعاً وَشِفَائً مِّنْ كُلِ دَائً","While going for Saaee Raise hands towards Hajr-e-aswad and Recite \n بِسمِ اللّهِ اللّهُ اَكْبَر","Recite when reached saffa \n إِنَّ الصَّفَا وَالْمَرْوَةَ مِنْ شَعَا ئِرِاللّهِ\n أَبْدَأُ بِمَا بَدَأَاللّهُ بِه","Shave or trim hair","Your umrah has completed!"};
-    int  Images[] = {R.drawable.masjidalharam,R.drawable.uncoverrightshoulder,R.drawable.intention,R.drawable.hajreaswad1,R.drawable.makameibrahimif,R.drawable.nawafilatibrahimi,R.drawable.zamzamwater,R.drawable.persondrinkingzamazam,R.drawable.intention,R.drawable.hijreaswad,R.drawable.safatomarwa,R.drawable.scissorsf,R.drawable.umrahcom};
+    String [] EssentialItemDescription ;
+    int  [] Images;
 
     int  Imagesleftmenue[] = {R.drawable.finalumrah,R.drawable.kaba,R.drawable.ibrahimi,R.drawable.tap_water,R.drawable.saee,R.drawable.finalscissors};
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        MySQLiteHelper db = new MySQLiteHelper(getContext());
+
+        /**
+         * CRUD Operations
+         * */
+        // add Books
+        db.addUmrahitem(new Umrahclass("tawaf", "Enter Al-Haram gate on your right foot",R.drawable.masjidalharam),"umrah");
+        db.addUmrahitem(new Umrahclass("tawaf", "Uncover right shoulder",R.drawable.uncoverrightshoulder),"umrah");
+        db.addUmrahitem(new Umrahclass("tawaf", "Read dua \n بِسم الله،والصّلاة والسّلام على َرسول الله،الّلهُم افتَح لي أبوابَ رَحْمَتِك ",R.drawable.intention),"umrah");
+
+        db.addUmrahitem(new Umrahclass("tawaf", "Start each round while touching or raising hands towards Hajr-e-aswad",R.drawable.hajreaswad1),"umrah");
+        db.addUmrahitem(new Umrahclass("Nafal", "Behind maqam ibrahim pray two raka",R.drawable.makameibrahimif),"umrah");
+        db.addUmrahitem(new Umrahclass("Nafal", "Recite surah Kaafiroon in first raka \n Recite surah Ikhlas in second raka ",R.drawable.nawafilatibrahimi),"umrah");
+
+        db.addUmrahitem(new Umrahclass("Zamzam", "Drink zamzam after performing Raka",R.drawable.zamzamwater),"umrah");
+        db.addUmrahitem(new Umrahclass("Zamzam", "Drink in 1 gulp",R.drawable.persondrinkingzamazam),"umrah");
+        db.addUmrahitem(new Umrahclass("Zamzam", "recite \n   آللّهُمَ اِنِّىْ اَسْعَلُكَ عِلْماً نَّافَعِاً وَّرِزْقًا وَّاسِعاً وَشِفَائً مِّنْ كُلِ دَائً",R.drawable.intention),"umrah");
+
+        db.addUmrahitem(new Umrahclass("Saaee", "While going for Saaee Raise hands towards Hajr-e-aswad and Recite \n بِسمِ اللّهِ اللّهُ اَكْبَر",R.drawable.hijreaswad),"umrah");
+        db.addUmrahitem(new Umrahclass("Saaee", "Recite when reached saffa \n إِنَّ الصَّفَا وَالْمَرْوَةَ مِنْ شَعَا ئِرِاللّهِ\n أَبْدَأُ بِمَا بَدَأَاللّهُ بِه",R.drawable.safatomarwa),"umrah");
+        db.addUmrahitem(new Umrahclass("Haircut", "Shave or trim hair ",R.drawable.scissorsf),"umrah");
+
+        db.addUmrahitem(new Umrahclass("umrah-completion", "Your umrah has completed!",R.drawable.umrahcom),"umrah");
+
+        // get all books
+        List<Umrahclass> list = db.getAllUmrah("umrah");
+        Log.d("length of array is","iaiia"+list.size());
+
+
+        Log.d("valuee is ","aallal"+list.get(1).getDescription());
+
+        EssentialItemDescription=new String[list.size()];
+        Images=new int[list.size()];
+
+        for (int i = 0; i <EssentialItemDescription .length; i++)
+        {
+            EssentialItemDescription[i]=(list.get(i).getDescription());
+        }
+        for (int i = 0; i <Images .length; i++)
+        {
+            Images[i]=(list.get(i).getImagename());
+        }
+
+
+
         initializeList();
     }
 
