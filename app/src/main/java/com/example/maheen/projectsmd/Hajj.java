@@ -27,6 +27,7 @@ public class Hajj extends Fragment {
     RecyclerView MyRecyclerView;
     RecyclerView RecyclerViewleftmenue;
 
+<<<<<<< HEAD
     // Adapter for the content Recycler View
     HajjContentAdapter mAdapter = null;
 
@@ -34,12 +35,47 @@ public class Hajj extends Fragment {
     // TODO: Populate these from DB
     String EssentialItemDescription[] = {"Bath and put on Ihram","Read the dua to make intention","Here on contineously read talbiyah","Go to minnah","Pray qasr prayers"};
     int  Images[] = {R.drawable.ihram_man_women,R.drawable.intention,R.drawable.talbiyah,R.drawable.minnah,R.drawable.namaz};
+=======
+
+    String [] EssentialItemDescription ;
+    int  [] Images;
+    //  String EssentialItemDescription[] = {"Bath and put on Ihram","Read the dua to make intention","Here on contineously read talbiyah","Go to minnah","Pray qasr prayers"};
+   // int  Images[] = {R.drawable.ihram_man_women,R.drawable.intention,R.drawable.talbiyah,R.drawable.minnah,R.drawable.namaz};
+>>>>>>> e619cc0c6750135230f855c588331e17674ce4d5
 
     int  Imagesleftmenue[] = {R.drawable.zulhijjah,R.drawable.zillhajj8,R.drawable.zillhajj9,R.drawable.zillhajj10,R.drawable.zillhajj11,R.drawable.zillhajj12,R.drawable.zillhajj13, R.drawable.dos};
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MySQLiteHelper db2 = new MySQLiteHelper(getContext());
+        db2.addUmrahitem(new Umrahclass("8Zilhajj", "Bath and put on Ihram",R.drawable.ihram_man_women),"hajj");
+        db2.addUmrahitem(new Umrahclass("8Zilhajj", "Read the dua to make intention",R.drawable.intention),"hajj");
+
+        db2.addUmrahitem(new Umrahclass("8Zilhajj", "Here on contineously read talbiyah",R.drawable.talbiyah),"hajj");
+        db2.addUmrahitem(new Umrahclass("8Zilhajj", "Go to minnah",R.drawable.minnah),"hajj");
+
+        db2.addUmrahitem(new Umrahclass("8Zilhajj", "Pray qasr prayers",R.drawable.namaz),"hajj");
+
+        List<Umrahclass> list = db2.getAllUmrah("hajj");
+        Log.d("length of array is","iaiia"+list.size());
+
+
+        Log.d("valuee is ","aallal"+list.get(1).getDescription());
+
+
+        EssentialItemDescription=new String[list.size()];
+        Images=new int[list.size()];
+
+        for (int i = 0; i <EssentialItemDescription .length; i++)
+        {
+            EssentialItemDescription[i]=(list.get(i).getDescription());
+        }
+        for (int i = 0; i <Images .length; i++)
+        {
+            Images[i]=(list.get(i).getImagename());
+        }
+
         initializeList();
     }
 

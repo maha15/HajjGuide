@@ -6,8 +6,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Hajj.OnFragmentInteractionListener,Umrah.OnFragmentInteractionListener,Prepare.OnFragmentInteractionListener {
 
@@ -25,6 +28,11 @@ public class MainActivity extends AppCompatActivity implements Hajj.OnFragmentIn
         tabLayout.addTab(tabLayout.newTab().setText("Hajj"));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+
+
+
+
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         final PageAdapter adapter = new PageAdapter
