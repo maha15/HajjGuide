@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 
-public class SimpleSectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class HajjContentSectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final Context mContext;
     private static final int SECTION_TYPE = 0;
@@ -25,8 +25,8 @@ public class SimpleSectionedRecyclerViewAdapter extends RecyclerView.Adapter<Rec
     private SparseArray<Section> mSections = new SparseArray<Section>();
 
 
-    public SimpleSectionedRecyclerViewAdapter(Context context, int sectionResourceId, int textResourceId,
-                                              RecyclerView.Adapter baseAdapter) {
+    public HajjContentSectionedRecyclerViewAdapter(Context context, int sectionResourceId, int textResourceId,
+                                                   RecyclerView.Adapter baseAdapter) {
 
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mSectionResourceId = sectionResourceId;

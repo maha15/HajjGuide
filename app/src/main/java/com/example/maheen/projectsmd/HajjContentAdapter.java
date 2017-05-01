@@ -13,15 +13,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleViewHolder> {
+public class HajjContentAdapter extends RecyclerView.Adapter<HajjContentAdapter.SimpleViewHolder> {
 
     private static Context mContext;
     private List<EssentialItem> mData;
 
-    public SimpleAdapter(Context context, ArrayList<EssentialItem>  data) {
+    public HajjContentAdapter(Context context, ArrayList<EssentialItem>  data) {
         mContext = context;
         if (data != null)
             mData = new ArrayList<EssentialItem>(data);
@@ -145,15 +144,14 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
         holder.likeImageView.setTag(R.drawable.ic_like);
 
 
-
-
-        /*holder.title.setText(mData.get(position));
-        holder.title.setOnClickListener(new View.OnClickListener() {
+        holder.titleTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(mContext,"Position ="+position,Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
+
+
     }
 
     @Override
